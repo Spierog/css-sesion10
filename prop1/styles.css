@@ -1,0 +1,103 @@
+* { box-sizing: border-box; }
+
+body {
+ margin: 0;
+ min-height: 100vh;
+ font-family: Arial, sans-serif;
+ background: #f1f5f9;
+ color: #0f172a;
+ overflow-x: hidden;
+}
+
+/* Checkbox oculto visualmente pero accesible por teclado */
+.menu-toggle {
+ position: absolute;
+ opacity: 0;
+ pointer-events: none;
+}
+
+.boton-menu {
+ position: fixed;
+ top: 20px;
+ left: 20px;
+ z-index: 30;
+ padding: 12px 22px;
+ color: #fff;
+ background: #2563eb;
+ border-radius: 8px;
+ cursor: pointer;
+ user-select: none;
+ transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.boton-menu:hover,
+.menu-toggle:focus-visible ~ .boton-menu {
+ background: #1e40af;
+ transform: translateY(-2px);
+}
+
+/* Barra oculta fuera de la pantalla */
+.barra {
+ position: fixed;
+ top: 0;
+ left: 0;
+ z-index: 20;
+ width: 260px;
+ height: 100%;
+ padding: 90px 0 24px;
+ background: #0f172a;
+ transform: translateX(-100%);
+ transition: transform 0.4s ease;
+}
+
+.barra h2 {
+ margin: 0 0 16px;
+ padding: 0 24px;
+ color: #94a3b8;
+ font-size: 0.85rem;
+ text-transform: uppercase;
+ letter-spacing: 0.1em;
+}
+
+.barra a {
+ display: block;
+ padding: 14px 24px;
+ color: #e2e8f0;
+ text-decoration: none;
+ border-left: 4px solid transparent;
+ transition: background-color 0.3s ease, padding-left 0.3s ease, border-color 0.3s ease;
+}
+
+.barra a:hover,
+.barra a:focus-visible {
+ background: #1e293b;
+ padding-left: 36px;
+ border-left-color: #38bdf8;
+ outline: none;
+}
+
+/* Fondo oscuro que cierra el menú al hacer clic */
+.fondo {
+ position: fixed;
+ inset: 0;
+ z-index: 10;
+ background: rgba(15, 23, 42, 0.5);
+ opacity: 0;
+ visibility: hidden;
+ transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+/* Estado abierto */
+.menu-toggle:checked ~ .barra { transform: translateX(0); }
+.menu-toggle:checked ~ .fondo { opacity: 1; visibility: visible; }
+
+.contenido {
+ max-width: 700px;
+ margin: 0 auto;
+ padding: 100px 24px;
+ text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+ * { transition-duration: 0.01ms !important; }
+}

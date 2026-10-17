@@ -1,0 +1,73 @@
+:root { --lado: 200px; }
+
+body {
+ margin: 0;
+ min-height: 100vh;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ gap: 70px;
+ background: #0b1020;
+ color: #e2e8f0;
+ font-family: Arial, sans-serif;
+ text-align: center;
+}
+
+h1, p { margin: 0; }
+
+/* PADRE: perspectiva y ampliación con transición (no choca con la animación del hijo) */
+.escena {
+ width: var(--lado);
+ height: var(--lado);
+ perspective: 800px;
+ transition: transform 0.5s ease;
+}
+
+.escena:hover {
+ transform: scale(1.35);
+}
+
+/* HIJO: giro continuo con @keyframes */
+.cubo {
+ position: relative;
+ width: 100%;
+ height: 100%;
+ transform-style: preserve-3d;
+ animation: girar 12s linear infinite;
+}
+
+/* Al pasar el cursor por la escena, se detiene el giro */
+.escena:hover .cubo {
+ animation-play-state: paused;
+}
+
+@keyframes girar {
+ from { transform: rotateX(-20deg) rotateY(0deg); }
+ to { transform: rotateX(-20deg) rotateY(360deg); }
+}
+
+.cara {
+ position: absolute;
+ inset: 0;
+ display: grid;
+ place-items: center;
+ font-size: 1.4rem;
+ font-weight: bold;
+ color: #fff;
+ border: 2px solid rgba(255, 255, 255, 0.6);
+ backface-visibility: visible;
+}
+
+/* Cada cara: rotación + desplazamiento en Z igual a la mitad del lado */
+.frente { background: rgba(37, 99, 235, 0.85); transform: rotateY(0deg) translateZ(calc(var(--lado) / 2)); }
+.atras { background: rgba(124, 58, 237, 0.85); transform: rotateY(180deg) translateZ(calc(var(--lado) / 2)); }
+.derecha { background: rgba(5, 150, 105, 0.85); transform: rotateY(90deg) translateZ(calc(var(--lado) / 2)); }
+.izquierda { background: rgba(8, 145, 178, 0.85); transform: rotateY(-90deg) translateZ(calc(var(--lado) / 2)); }
+.arriba { background: rgba(234, 88, 12, 0.85); transform: rotateX(90deg) translateZ(calc(var(--lado) / 2)); }
+.abajo { background: rgba(219, 39, 119, 0.85); transform: rotateX(-90deg) translateZ(calc(var(--lado) / 2)); }
+
+@media (prefers-reduced-motion: reduce) {
+ .cubo { animation: none; transform: rotateX(-25deg) rotateY(35deg); }
+ .escena { transition-duration: 0.01ms; }
+}

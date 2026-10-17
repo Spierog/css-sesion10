@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Propuesto 1 - Menú lateral deslizable</title>
+ <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ <!-- El checkbox controla el estado abierto/cerrado sin JavaScript -->
+ <input type="checkbox" id="menu-toggle" class="menu-toggle">
+
+ <label for="menu-toggle" class="boton-menu" tabindex="0">☰ Menú</label>
+
+ <label for="menu-toggle" class="fondo" aria-hidden="true"></label>
+
+ <nav class="barra" aria-label="Menú principal">
+ <h2>Navegación</h2>
+ <a href="#inicio">Inicio</a>
+ <a href="#cursos">Cursos</a>
+ <a href="#proyectos">Proyectos</a>
+ <a href="#contacto">Contacto</a>
+ </nav>
+
+ <main class="contenido">
+ <h1>Menú lateral deslizable</h1>
+ <p>Pulse el botón "Menú" para deslizar la barra lateral con una transición de 0,4 s.</p>
+ </main>
+</body>
+</html>

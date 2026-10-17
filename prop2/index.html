@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Propuesto 2 - Ícono hamburguesa animado</title>
+ <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ <h1>Ícono hamburguesa → X</h1>
+ <p>Pase el cursor o haga clic / Enter para alternar.</p>
+
+ <button class="hamburguesa" aria-label="Abrir menú" aria-expanded="false">
+ <span class="linea l1"></span>
+ <span class="linea l2"></span>
+ <span class="linea l3"></span>
+ </button>
+
+ <script>
+ const btn = document.querySelector('.hamburguesa');
+ btn.addEventListener('click', () => {
+ const abierto = btn.classList.toggle('activo');
+ btn.setAttribute('aria-expanded', abierto);
+ });
+ </script>
+</body>
+</html>

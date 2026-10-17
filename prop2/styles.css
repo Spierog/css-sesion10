@@ -1,0 +1,67 @@
+body {
+ margin: 0;
+ min-height: 100vh;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ gap: 16px;
+ background: #0f172a;
+ color: #e2e8f0;
+ font-family: Arial, sans-serif;
+ text-align: center;
+}
+
+.hamburguesa {
+ position: relative;
+ width: 64px;
+ height: 64px;
+ padding: 0;
+ background: #1e293b;
+ border: 2px solid #38bdf8;
+ border-radius: 12px;
+ cursor: pointer;
+ transition: background-color 0.3s ease;
+}
+
+.hamburguesa:hover,
+.hamburguesa:focus-visible {
+ background: #334155;
+}
+
+.linea {
+ position: absolute;
+ left: 14px;
+ width: 32px;
+ height: 4px;
+ background: #38bdf8;
+ border-radius: 2px;
+ transform-origin: center;
+ transition: transform 0.4s ease, opacity 0.3s ease, top 0.4s ease;
+}
+
+.l1 { top: 17px; }
+.l2 { top: 28px; }
+.l3 { top: 39px; }
+
+/* Estado X: al hover o al hacer clic (clase .activo) */
+.hamburguesa:hover .l1,
+.hamburguesa.activo .l1 {
+ top: 28px;
+ transform: rotate(45deg);
+}
+
+.hamburguesa:hover .l2,
+.hamburguesa.activo .l2 {
+ opacity: 0;
+}
+
+.hamburguesa:hover .l3,
+.hamburguesa.activo .l3 {
+ top: 28px;
+ transform: rotate(-45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+ * { transition-duration: 0.01ms !important; }
+}
